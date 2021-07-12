@@ -11,3 +11,6 @@ nohup*
 datasets/
 venv/
 Kather_texture_2016_image_tiles_5000.zip
+dataset_original/
+dataset_small/
+data_own/
