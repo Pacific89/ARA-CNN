@@ -40,7 +40,7 @@ if __name__ == "__main__":
     # create input path:
     input_path = "/usr/local/data/{0}".format(file_name)
     # create correct command to start HQC:
-    command_hqc = "python /usr/local/src/src/test_model.py --input_images {0} --output_path {1} --model_path {2} --measure {3} --coords {4}".format(input_path, output_path, model_path, measure, coords)
+    command_hqc = "python /usr/local/src/src/test_model.py --input-images {0} --output-path {1} --model-path {2} --measure {3} --coords {4}".format(input_path, output_path, model_path, measure, coords)
     print(command_hqc)
     # start HQC:
     os.system(command_hqc)
