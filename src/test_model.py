@@ -81,7 +81,7 @@ class ModelLoader(object):
 
         return zip(os.listdir(test_set_path), img_results, uncertainty_results)
 
-    def test_coords_variational(self, test_set_path, measure, max_img_count=1000):
+    def test_coords_variational(self, test_img_path, measure, max_img_count=1000):
         import os
         import h5py
         import openslide
@@ -95,17 +95,20 @@ class ModelLoader(object):
         images = None
         counter = 0
 
-        img_files = [f for f in os.listdir(test_set_path) if f.endswith("svs")]
-        coord_files = [f.replace("svs", "h5") for f in img_files]
+        # img_files = [f for f in os.listdir(test_set_path) if f.endswith("svs")]
+        # coord_files = [f.replace("svs", "h5") for f in img_files]
 
-        print(img_files, coord_files)
-        with h5py.File(os.path.join(test_set_path ,coord_files[0]), "r") as f:
+        img_file = test_img_path
+        coord_file = test_img_path.replace("svs", "h5")
+
+        print(img_file, coord_file)
+        with h5py.File(os.path.join(coord_file), "r") as f:
             patch_coords = np.array(f["coords"])
         print(len(patch_coords))
 
         patch_level = 0
         patch_size = 150
-        wsi = openslide.open_slide(os.path.join(test_set_path, img_files[0]))
+        wsi = openslide.open_slide(os.path.join(img_file))
         print(patch_coords)
         patch_ids = []
         p_coords = []
