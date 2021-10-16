@@ -5,7 +5,7 @@ import os
 import argparse
 
 # open config file for "RUN-COMMAND"
-with open("usr/local/config/ara_command_config.json") as json_file:
+with open("/usr/local/config/ara_command_config.json") as json_file:
     ara_config = json.loads(json_file.read())
 
 
