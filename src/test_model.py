@@ -161,7 +161,7 @@ class ModelLoader(object):
                 for j in range(0, len(CLASS_DICT.keys())):
                     img_results[i][j] /= TEST_RUNS
 
-            patch_ids.append(img_files[0] + "_num_" + str(counter))
+            patch_ids.append(img_file + "_num_" + str(counter))
             p_coords.append(coords)
             all_img_results.append(img_results)
             all_un_results.append(uncertainty_results)
