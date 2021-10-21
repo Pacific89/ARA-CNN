@@ -36,10 +36,10 @@ if __name__ == "__main__":
     # create input path:
     input_path = glob.glob("/usr/local/data/{0}/*.svs".format(input_folder))[0]
 
-    output_path = ara_config["output_path"] + "/{0}/data/clam".format(input_folder) # set output folder
+    output_path = ara_config["output_path"] + "/{0}/data/ara".format(input_folder) # set output folder
     model_path = ara_config["model_path"] # choose config file
     measure = ara_config["measure"] # default in qc_pipeline: "" (empty string)
-    coords = output_path + "/{0}/data/clam/patches/{0}.h5".format(input_folder) # coords file path
+    coords = ara_config["output_path"] + "/{0}/data/clam/patches/{0}.h5".format(input_folder) # coords file path
 
 
     # create correct command to start HQC:
