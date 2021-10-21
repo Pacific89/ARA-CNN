@@ -3,6 +3,7 @@ import json
 import sys
 import os
 import argparse
+import glob
 
 # open config file for "RUN-COMMAND"
 with open("/usr/local/config/ara_command_config.json") as json_file:
@@ -26,19 +27,21 @@ if __name__ == "__main__":
         except:
             print("Not a valid json config string. Using default")
 
-    output_path = ara_config["output_path"] # set output folder
-    model_path = ara_config["model_path"] # choose config file
-    measure = ara_config["measure"] # default in qc_pipeline: "" (empty string)
-    coords = json.loads(ara_config["coords"].lower()) # force overwrite existing output files: default in qc_pipeline: False
-
     # get filename from command line arguments:
     try:
-        file_name = sys.argv[1]
+        input_folder = sys.argv[1]
     except:
         print("Please Provide a file")
         sys.exit()
     # create input path:
-    input_path = "/usr/local/data/{0}".format(file_name)
+    input_path = glob.glob("/usr/loca/data/{0}/*.svs").format(input_folder)[0]
+
+    output_path = ara_config["output_path"] + "/{0}/data/clam".format(input_folder) # set output folder
+    model_path = ara_config["model_path"] # choose config file
+    measure = ara_config["measure"] # default in qc_pipeline: "" (empty string)
+    coords = json.loads(ara_config["coords"].lower()) # force overwrite existing output files: default in qc_pipeline: False
+
+
     # create correct command to start HQC:
     command_hqc = "python /usr/local/src/src/test_model.py --input-images {0} --output-path {1} --model-path {2} --measure {3} --coords {4}".format(input_path, output_path, model_path, measure, coords)
     print(command_hqc)
