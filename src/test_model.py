@@ -81,7 +81,7 @@ class ModelLoader(object):
 
         return zip(os.listdir(test_set_path), img_results, uncertainty_results)
 
-    def test_coords_variational(self, test_img_path, measure, max_img_count=1000):
+    def test_coords_variational(self, test_img_path, coord_file, measure, max_img_count=1000):
         import os
         import h5py
         import openslide
@@ -99,7 +99,6 @@ class ModelLoader(object):
         # coord_files = [f.replace("svs", "h5") for f in img_files]
 
         img_file = test_img_path
-        coord_file = test_img_path.replace("svs", "h5")
 
         print(img_file, coord_file)
         with h5py.File(os.path.join(coord_file), "r") as f:
@@ -177,7 +176,7 @@ if __name__ == '__main__':
     parser.add_argument('--input-images', dest='input_images', help='Path to the folder with images to test')
     parser.add_argument('--measure', dest='measure', help='Uncertainty measure', choices=['Entropy', 'BALD'])
     parser.add_argument('--output-path', dest='output_path', help='Output folder for the results file')
-    parser.add_argument('--coords', dest='coords', help='Bool if input folder containes coordinates in hdf5 files', default=False, required=False, type=bool)
+    parser.add_argument('--coords', dest='coords', help='input hdf5 that containes coordinates', default=False, required=False, type=str)
 
     args = parser.parse_args()
 

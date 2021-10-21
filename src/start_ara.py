@@ -39,7 +39,7 @@ if __name__ == "__main__":
     output_path = ara_config["output_path"] + "/{0}/data/clam".format(input_folder) # set output folder
     model_path = ara_config["model_path"] # choose config file
     measure = ara_config["measure"] # default in qc_pipeline: "" (empty string)
-    coords = json.loads(ara_config["coords"].lower()) # force overwrite existing output files: default in qc_pipeline: False
+    coords = output_path + "/{0}/data/clam/patches/{0}.h5".format(input_folder) # coords file path
 
 
     # create correct command to start HQC:
