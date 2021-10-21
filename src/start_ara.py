@@ -34,7 +34,7 @@ if __name__ == "__main__":
         print("Please Provide a file")
         sys.exit()
     # create input path:
-    input_path = glob.glob("/usr/loca/data/{0}/*.svs".format(input_folder))[0]
+    input_path = glob.glob("/usr/local/data/{0}/*.svs".format(input_folder))[0]
 
     output_path = ara_config["output_path"] + "/{0}/data/clam".format(input_folder) # set output folder
     model_path = ara_config["model_path"] # choose config file
