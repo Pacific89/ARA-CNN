@@ -184,7 +184,7 @@ if __name__ == '__main__':
     model_loader.load_model()
 
     if args.coords:
-        result = model_loader.test_coords_variational(args.input_images, args.measure)
+        result = model_loader.test_coords_variational(args.input_images, args.coords, args.measure)
     else:
         result = model_loader.test_folder_variational(args.input_images, args.measure)
 
