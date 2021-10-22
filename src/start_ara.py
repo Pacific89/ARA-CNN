@@ -1,5 +1,6 @@
 # coding=utf-8
 import json
+import pandas
 import sys
 import os
 import argparse
@@ -8,6 +9,12 @@ import glob
 # open config file for "RUN-COMMAND"
 with open("/usr/local/config/ara_command_config.json") as json_file:
     ara_config = json.loads(json_file.read())
+
+def output_to_json(output_path):
+    csv_path = output_path + "results.csv"
+    json_path = csv_path.replace("csv", "json")
+    df = pd.read_csv(csv_path)
+    df.to_json(json_path, orient="index")
 
 
 if __name__ == "__main__":
@@ -33,7 +40,10 @@ if __name__ == "__main__":
     except:
         print("Please Provide a file")
         sys.exit()
+
     # create input path:
+    # ToDo: add base path: "/usr/local/data/INPUT_FILE_NO_EXT"
+    
     input_path = glob.glob("/usr/local/data/{0}/*.svs".format(input_folder))[0]
 
     output_path = ara_config["output_path"] + "/{0}/data/ara".format(input_folder) # set output folder
@@ -47,3 +57,5 @@ if __name__ == "__main__":
     print(command_hqc)
     # start HQC:
     os.system(command_hqc)
+
+    output_to_json(output_path)
