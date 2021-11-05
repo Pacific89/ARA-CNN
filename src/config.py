@@ -7,14 +7,15 @@ CHANNELS = 1 if COLOR_TYPE == 'grayscale' else 3
 
 # Main class dictionary - this needs to match folder names in your training dataset
 CLASS_DICT = {
-    "01_TUMOR" : 0,
-    "02_STROMA": 1,
-    "03_COMPLEX": 2,
-    "04_LYMPHO": 3,
-    "05_DEBRIS": 4,
-    "06_MUCOSA": 5,
-    "07_ADIPOSE": 6,
-    "08_EMPTY": 7
+    "TUM" : 0,
+    "STR": 1,
+    "NORM": 2,
+    "LYM": 3,
+    "DEB": 4,
+    "MUC": 5,
+    "ADI": 6,
+    "MUS": 7,
+    "BACK": 8,
 }
 
 # Default optimizer
