@@ -13,7 +13,7 @@ class EmptyImagesFolder(Exception):
     pass
 
 
-def load_all_images_from_folder(folder_path, target_size, color_mode, image_extension="jpg"):
+def load_all_images_from_folder(folder_path, target_size, color_mode, image_extension="tif"):
     # Getting list of images filepath
     list_of_files = os.listdir(folder_path)
     list_of_images_path = [os.path.join(folder_path, path) for path in list_of_files if path.endswith(image_extension)]
