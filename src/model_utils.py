@@ -31,6 +31,7 @@ def load_all_images_from_folder(folder_path, target_size, color_mode, image_exte
 def import_folder_to_numpy_array(folder_path, target_size, color_mode, binary=False, class_dict=None):
     # Preparations of accumulative variables
     classes = os.listdir(folder_path)
+    print("Classes: ", classes)
     arrays_list = list()
     class_list = list()
 
