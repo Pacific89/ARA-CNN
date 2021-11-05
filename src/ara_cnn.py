@@ -224,8 +224,8 @@ def train_cycle(datasets_path, output_dir, epochs):
     THRESHOLD_LOSS_VALUE_2 = 0.8
     RESTARTER_PATIENCE_1 = 10
     RESTARTER_PATIENCE_2 = 100
-    TRAIN_BATCH_SIZE = 32
-    TEST_BATCH_SIZE = 128
+    TRAIN_BATCH_SIZE = 8
+    TEST_BATCH_SIZE = 16
     SEED = 42
     EPOCHS = epochs
 
