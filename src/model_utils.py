@@ -48,6 +48,7 @@ def import_folder_to_numpy_array(folder_path, target_size, color_mode, binary=Fa
             class_name = '02_NOT_TUMOR'
 
         class_list.append(class_name)
+    print("ClasseList: ", class_list)
 
     # Preparations of class_dict if it not exist
     if class_dict is None:
