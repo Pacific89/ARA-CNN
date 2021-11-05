@@ -59,6 +59,8 @@ def import_folder_to_numpy_array(folder_path, target_size, color_mode, binary=Fa
     # Preparations of labels
     labels = list()
     for class_nb, class_name in enumerate(class_list):
+        print("class_name:", class_name)
+        print("class_nb:", class_nb)
         labels = labels + [class_dict[class_name]] * arrays_list[class_nb].shape[0]
 
     # Final joining to numpy arrays
