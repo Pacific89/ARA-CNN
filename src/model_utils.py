@@ -8,6 +8,7 @@ from keras.regularizers import l2
 
 from keras import backend as K
 
+print(K.tensorflow_backend._get_available_gpus())
 
 class EmptyImagesFolder(Exception):
     pass
