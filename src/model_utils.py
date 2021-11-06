@@ -7,7 +7,8 @@ from keras.preprocessing.image import load_img, img_to_array
 from keras.regularizers import l2
 
 from keras import backend as K
-
+from tensorflow.python.client import device_lib
+print(device_lib.list_local_devices())
 print(K.tensorflow_backend._get_available_gpus())
 
 class EmptyImagesFolder(Exception):
