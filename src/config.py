@@ -15,7 +15,6 @@ CLASS_DICT = {
     "MUC": 5,
     "ADI": 6,
     "MUS": 7,
-    "BACK": 8,
 }
 
 # Default optimizer
