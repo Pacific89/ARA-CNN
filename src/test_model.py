@@ -140,9 +140,6 @@ class ModelLoader(object):
                 test = variational_inference_function(images, VARIATIONAL_SAMPLES)
                 uncertainties = compute_table_uncertainty(test, measure)
                 predictions = list(test.mean(axis=0))
-                print(test)
-                print(uncertainties)
-                print(predictions)
                 all_u.append(uncertainties)
                 all_p.append(predictions)
 
@@ -151,6 +148,8 @@ class ModelLoader(object):
 
             for i in range(0, len(images)):
                 for run in all_u:
+                    print(run)
+                    print(uncertainty_results)
                     uncertainty_results[i] += run[i]
 
                 for run in all_p:
