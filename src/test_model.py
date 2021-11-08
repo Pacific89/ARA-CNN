@@ -124,7 +124,7 @@ class ModelLoader(object):
             # test_img = img_to_array(
             #     load_img(path=os.path.join(test_set_path, img), grayscale=False, target_size=IMAGE_SIZE))
 
-            # test_img = test_img[None, ...]
+            test_img = test_img[None, ...]
 
             vectr = np.vectorize(lambda x: x / 255.0)
             mapped_test_img = vectr(test_img)
