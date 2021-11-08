@@ -133,8 +133,6 @@ class ModelLoader(object):
             # else:
             #     images = np.append(images, np.array(mapped_test_img), axis=0)
 
-            print(test_img)
-            print(images)
             all_p = []
             all_u = []
 
@@ -142,6 +140,9 @@ class ModelLoader(object):
                 test = variational_inference_function(images, VARIATIONAL_SAMPLES)
                 uncertainties = compute_table_uncertainty(test, measure)
                 predictions = list(test.mean(axis=0))
+                print(test)
+                print(uncertainties)
+                print(predictions)
                 all_u.append(uncertainties)
                 all_p.append(predictions)
 
