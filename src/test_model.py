@@ -145,6 +145,8 @@ class ModelLoader(object):
             img_results = [[0 for x in range(0, len(CLASS_DICT.keys()))] for i in range(0, len(images))]
             uncertainty_results = [0 for i in range(0, len(images))]
 
+            print(uncertainty_results)
+            print(img_results)
             for i in range(0, len(images)):
                 for run in all_u:
                     uncertainty_results[i] += run[i]
