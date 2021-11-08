@@ -123,15 +123,18 @@ class ModelLoader(object):
             t = time.time()
             # test_img = img_to_array(
             #     load_img(path=os.path.join(test_set_path, img), grayscale=False, target_size=IMAGE_SIZE))
-            test_img = test_img[None, ...]
+
+            # test_img = test_img[None, ...]
 
             vectr = np.vectorize(lambda x: x / 255.0)
             mapped_test_img = vectr(test_img)
             if images is None:
                 images = mapped_test_img
-            else:
-                images = np.append(images, np.array(mapped_test_img), axis=0)
+            # else:
+            #     images = np.append(images, np.array(mapped_test_img), axis=0)
 
+            print(test_img)
+            print(images)
             all_p = []
             all_u = []
 
@@ -145,8 +148,6 @@ class ModelLoader(object):
             img_results = [[0 for x in range(0, len(CLASS_DICT.keys()))] for i in range(0, len(images))]
             uncertainty_results = [0 for i in range(0, len(images))]
 
-            print(uncertainty_results)
-            print(img_results)
             for i in range(0, len(images)):
                 for run in all_u:
                     uncertainty_results[i] += run[i]
