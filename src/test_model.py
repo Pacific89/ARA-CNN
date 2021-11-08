@@ -106,7 +106,7 @@ class ModelLoader(object):
         print(len(patch_coords))
 
         patch_level = 0
-        patch_size = 150
+        patch_size = 128
         wsi = openslide.open_slide(os.path.join(img_file))
         print(patch_coords)
         patch_ids = []
@@ -132,7 +132,6 @@ class ModelLoader(object):
             else:
                 images = np.append(images, np.array(mapped_test_img), axis=0)
 
-            print(images)
             all_p = []
             all_u = []
 
