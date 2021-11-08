@@ -132,6 +132,7 @@ class ModelLoader(object):
             else:
                 images = np.append(images, np.array(mapped_test_img), axis=0)
 
+            print(images)
             all_p = []
             all_u = []
 
