@@ -108,7 +108,6 @@ class ModelLoader(object):
         patch_level = 0
         patch_size = 128
         wsi = openslide.open_slide(os.path.join(img_file))
-        print(patch_coords)
         patch_ids = []
         p_coords = []
         all_img_results = []
@@ -145,8 +144,6 @@ class ModelLoader(object):
 
             img_results = [[0 for x in range(0, len(CLASS_DICT.keys()))] for i in range(0, len(images))]
             uncertainty_results = [0 for i in range(0, len(images))]
-            print(all_p)
-            print(all_u)
 
             for i in range(0, len(images)):
                 for run in all_u:
