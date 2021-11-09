@@ -25,6 +25,7 @@ if __name__ == "__main__":
     parser.add_argument('-c', '--config', help="json string with config parameters: \n Defaults: {0}".format(ara_config), default="config_light", type=str)
 
     args = parser.parse_args()
+    print(args)
 
     if args.config:
         # try to read dict from json string and update default values
