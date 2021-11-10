@@ -130,7 +130,11 @@ class ModelLoader(object):
             images = None
             test_img = img_to_array(wsi.read_region(coords, patch_level, tuple([patch_size, patch_size])).convert('RGB'))
             if normalize:
-                test_img = normalizer.transform(np.uint8(test_img))
+                try:
+                    test_img = normalizer.transform(np.uint8(test_img))
+                except Exception:
+                    print("Warning: ", Exception)
+                    pass
             print(" {0} / {1} | Time: {2}".format(counter, len(patch_coords), time.time()-t))
             t = time.time()
             # test_img = img_to_array(
