@@ -11,7 +11,7 @@ with open("/usr/local/config/ara_command_config.json") as json_file:
     ara_config = json.loads(json_file.read())
 
 def output_to_json(output_path):
-    csv_path = output_path + "results.csv"
+    csv_path = output_path + "/results.csv"
     json_path = csv_path.replace("csv", "json")
     df = pandas.read_csv(csv_path)
     df.to_json(json_path, orient="index")
@@ -59,4 +59,4 @@ if __name__ == "__main__":
     # start ARA:
     os.system(command_ara)
 
-    output_to_json(output_path)
+    # output_to_json(output_path)
