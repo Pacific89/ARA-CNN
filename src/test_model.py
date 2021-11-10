@@ -81,7 +81,16 @@ class ModelLoader(object):
 
         return zip(os.listdir(test_set_path), img_results, uncertainty_results)
 
-    def test_coords_variational(self, test_img_path, coord_file, measure, max_img_count=1000):
+    def get_normalizer(self):
+        import staintools
+
+        target_img_path = "/usr/local/src/Images/MUS-AAEKNQNW.tif"
+        target_img = staintools.read_image(target_img_path)
+        normalizer = staintools.StainNormalizer(method="macenko")
+        normalizer.fit(target_img)
+
+        return normalizer
+    def test_coords_variational(self, test_img_path, coord_file, measure, max_img_count=1000, normalize=True):
         import os
         import h5py
         import openslide
@@ -95,6 +104,8 @@ class ModelLoader(object):
         images = None
         counter = 0
 
+        if normalize:
+            normalizer = self.get_normalizer()
         # img_files = [f for f in os.listdir(test_set_path) if f.endswith("svs")]
         # coord_files = [f.replace("svs", "h5") for f in img_files]
 
@@ -118,6 +129,8 @@ class ModelLoader(object):
             #     break
             images = None
             test_img = img_to_array(wsi.read_region(coords, patch_level, tuple([patch_size, patch_size])).convert('RGB'))
+            if normalize:
+                test_img = normalizer.transform(np.uint8(test_img))
             print(" {0} / {1} | Time: {2}".format(counter, len(patch_coords), time.time()-t))
             t = time.time()
             # test_img = img_to_array(
