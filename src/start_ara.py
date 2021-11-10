@@ -13,7 +13,7 @@ with open("/usr/local/config/ara_command_config.json") as json_file:
 def output_to_json(output_path):
     csv_path = output_path + "results.csv"
     json_path = csv_path.replace("csv", "json")
-    df = pd.read_csv(csv_path)
+    df = pandas.read_csv(csv_path)
     df.to_json(json_path, orient="index")
 
 
@@ -53,10 +53,10 @@ if __name__ == "__main__":
     coords = ara_config["output_path"] + "/{0}/data/clam/patches/{0}.h5".format(input_folder) # coords file path
 
 
-    # create correct command to start HQC:
-    command_hqc = "python /usr/local/src/src/test_model.py --input-images {0} --output-path {1} --model-path {2} --measure {3} --coords {4}".format(input_path, output_path, model_path, measure, coords)
-    print(command_hqc)
-    # start HQC:
-    os.system(command_hqc)
+    # create correct command to start ARA:
+    command_ara = "python /usr/local/src/src/test_model.py --input-images {0} --output-path {1} --model-path {2} --measure {3} --coords {4}".format(input_path, output_path, model_path, measure, coords)
+    print(command_ara)
+    # start ARA:
+    os.system(command_ara)
 
     output_to_json(output_path)
